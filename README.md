@@ -12,7 +12,7 @@ Server-side:
 Client-side:
 - VirtualSky
 - stuQuery
-- Astronomy Engine (ES module via CDN)
+- Astronomy Engine
 
 How to use:
 Go to terminal and run the following:
