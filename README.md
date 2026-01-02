@@ -2,14 +2,11 @@ An interactive astronomy dashboard that shows the best celestial objects to obse
 
 
 Technology used:
-Server-side:
 - Node.js
 - Express
 - SunCalc
-
-Client-side:
+- Open Meteo API
 - VirtualSky
-- stuQuery
 - Astronomy Engine
 
 How to use:
