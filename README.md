@@ -1,7 +1,7 @@
 An interactive astronomy dashboard that shows the best celestial objects to observe at the moment based on your location.
 
 
-Tech used:
+Technology used:
 Server-side:
 - Node.js
 - Express
