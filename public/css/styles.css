@@ -1,0 +1,148 @@
+body {/* general */
+  background-image: url("../images/saturn.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.centered{
+  text-align: center;
+}
+
+.moon {/* moon graphic info*/
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  background: darkslategray; 
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.15);
+}
+/* light circle*/
+.moon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #f2f2f2;
+}
+/*dark overlay*/
+.moon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: darkslategray;
+  transform: translateX(var(--shadow-shift, 0%)) scaleX(var(--shadow-scale, 1));
+  transform-origin: 50% 50%;
+}
+
+/*general card setup*/
+.card {
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid grey;
+  border-radius: 12px;
+  max-width: 1440px;
+}
+
+/*flex boxes to have things next to each other*/
+.flex {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+table, th, td {
+    border: 1px solid grey;
+}
+
+#skyWrap {/* wrap for sky */
+  position: relative;
+  width: 100%;
+  height: 1440px;
+}
+
+#starmap {
+  width: 100%;
+  height: 100%;
+}
+
+#targetRing {/* circle that circles selected object*/
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 80px;
+  height: 80px;
+  border: 2px solid white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+#targetLabel {/* label that label selected object*/
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 30px);
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-size: 12px;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.hidden { display: none; }
+
+.panel {
+  width: 280px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-family: system-ui, sans-serif;
+}
+
+/* list formatting */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+  max-height: 260px;     
+  overflow-y: auto;       
+  border-top: 1px solid #444;
+}
+
+.list-item {
+  border-bottom: 1px solid #444;
+}
+
+/* list button formats*/
+.list-btn {
+  width: 100%;
+  text-align: left;
+  padding: 10px 8px;
+  background: transparent;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+.list-btn:hover,
+.list-btn:focus {
+  outline: none;
+  background: rgba(255,255,255,0.08);
+}
+.list-btn.selected {
+  background: rgba(255,255,255,0.16);
+}
+.mag {
+  opacity: 0.85;
+  font-variant-numeric: tabular-nums;
+}
+
