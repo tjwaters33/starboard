@@ -1,14 +1,25 @@
 import { Moon, Sun } from "./sunandmoon.js";
-import { Skymap } from "./skymap.js";
-import { brightestSpaceObjects, renderBrightestList} from "./spaceobjects.js"
-
-
-const state = {
-    lat: 0,
-    lon: 0
-};
+import { state, loadState, hasLocation, setState } from "./state.js";
 
 const location = document.getElementById("location");
+const location_button = document.getElementById("use-location");
+if (location_button){
+    location_button.addEventListener("click", getLocation);
+}
+
+if (hasLocation() && loadState()) {//check if location has already been set. if so, remove button and load table
+    if (location) {
+        location.innerHTML =
+        "Current Location: " +
+        state.lat.toFixed(3) +
+        ", " +
+        state.lon.toFixed(3);
+    }
+    if (location_button) {
+        location_button.style.display = "none";
+    }
+    needLocation();
+}
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -19,15 +30,17 @@ function getLocation() {
     //console.log(state);
 }
 
-document.getElementById("use-location").addEventListener("click", getLocation);
-
 function success(position) {
-    state.lat = position.coords.latitude;
-    state.lon = position.coords.longitude;
-    location.innerHTML = "Current Location: " + state.lat.toFixed(3) +", " + state.lon.toFixed(3); 
-    //console.log(state);
+    setState(position.coords.latitude, position.coords.longitude);
+    if (location) {
+        location.innerHTML = "Current Location: " +state.lat.toFixed(3) +", " +state.lon.toFixed(3);
+    }
+    if (location_button) {
+        location_button.style.display = "none";
+    }
     needLocation();
 }
+
 
 function error() {
   alert("Sorry, no position available.");
@@ -249,19 +262,16 @@ async function loadWeather() {
 
 function needLocation(){//functions that need location, so will not run until location is turned on.
     loadWeather();
-    const skyMap = new Skymap(state.lat, state.lon);
-    const objs = brightestSpaceObjects(state);
-    //const zenith = getSiderealTime();
-    //this.sky.panTo(zenith, state.lat, 100);
-    skyMap.setCenteredObj(objs[0]);
-    const n = 10;
-    renderBrightestList(objs.slice(0, n), skyMap);
 }
 
 //create moon graphic
-const moon = new Moon();
-moon.setMoonNow();
-moon.drawMoon(document.getElementById("moonCanvas"), document.getElementById("moonText"))
+const moonCanvas = document.getElementById("moonCanvas");
+const moonText = document.getElementById("moonText");
+if (moonCanvas && moonText) {
+    const moon = new Moon();
+    moon.setMoonNow();
+    moon.drawMoon(moonCanvas, moonText);
+}
 
 
 /*const skyObj = {

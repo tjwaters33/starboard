@@ -146,3 +146,37 @@ table, th, td {
   font-variant-numeric: tabular-nums;
 }
 
+.nav-tabs {/* nav styles */
+  display: flex;              
+  justify-content: center;    
+  gap: 0.5rem;
+
+  background: #0b1020;
+  padding: 0.4rem;
+  border-radius: 999px;
+  width: fit-content;         
+  margin: 1rem auto;          
+}
+
+
+.nav-tabs a {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  color: #e6e6eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-tabs a:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.navbar a.active,
+.nav-tabs a.active {
+  background: #1e90ff;
+  color: white;
+}
+
+
+
+
