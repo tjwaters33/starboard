@@ -19,5 +19,5 @@ if (loadState()) {
   runStarfinder();
 } else {
   const directions = document.getElementById("directions");
-  if (directions) directions.textContent = "Enable location on Home page first.";
+  if (directions) directions.textContent = "Enable location on StarBoard page first.";
 }
