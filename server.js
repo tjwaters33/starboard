@@ -8,6 +8,12 @@ const __dirname = path.dirname(__filename);
 
 app.use(express.static(path.join(__dirname, "public")));
 
+//serve homepage for Render
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+
 // Weather endpoint
 app.get("/api/weather", async (req, res) => {
   try {
