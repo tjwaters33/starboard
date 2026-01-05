@@ -10,6 +10,11 @@ function runStarfinder() {//load sky map and list of brightest objects
 
   if (objs && objs.length) {
     skyMap.setCenteredObj(objs[0]);
+    if (objs[0].name == "The Sun: Solar System"){
+      const directions = document.getElementById("directions");
+      if (directions) directions.textContent = "Warning! The Sun is out. To view anything less bright than -0.5 \
+      magnitude you need a powerful telescope. To view anything near the Sun, you need a solar telescope!";
+    }
     renderBrightestList(objs.slice(0, 10), skyMap);
   }
 }

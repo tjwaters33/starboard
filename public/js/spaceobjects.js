@@ -189,10 +189,7 @@ export function renderBrightestList(objects, skyMap) {
         btn.dataset.ra = obj.ra;
         btn.dataset.dec = obj.dec;
 
-        btn.innerHTML = `
-        <span>${obj.name}</span>
-        <span class="mag">${obj.mag.toFixed(2)}</span>
-        `;
+        btn.innerHTML = `<span>${obj.name}</span><span class="mag">${obj.mag.toFixed(2)}</span>`;
         btn.addEventListener("click", () => {//when button is clicked, highlight it and unhighlight others
             document.querySelectorAll(".list-btn.selected").forEach(el => el.classList.remove("selected"));
             btn.classList.add("selected");
