@@ -12,7 +12,7 @@ Technology used:
 
 How to use: 
 Go to https://starboard-3uuf.onrender.com on your browser. It may take a minute to start.
-Or, clone repository and then go to terminal and run npm install and npm start.
+Or, clone repository and then run npm install and npm start in the terminal.
 
 To use, allow location access and then observe the features. The score shown at the top of the page is an all-inclusive score for how good stargazing will be at that moment. 100 is perfect, 0 is impossible. 
 Below you can see scores and info for the next 12 hours. To the right you can see the moon and its phase with a graphic.
