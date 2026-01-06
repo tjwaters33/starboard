@@ -12,14 +12,15 @@ export class Moon {
     }
 
     getPhase(phaseNumber){
-        if (phaseNumber <0.125) return "New Moon";
-        else if (phaseNumber < 0.25) return "Waxing Crescent";
-        else if (phaseNumber < 0.375) return "First Quarter";
-        else if (phaseNumber < 0.5) return "Waxing Gibbous";
-        else if (phaseNumber < 0.625) return "Full Moon";
-        else if (phaseNumber < 0.75) return "Waning Gibbous";
-        else if (phaseNumber < 0.875) return "Last Quarter";
-        else return "Waning Crescent";
+        if (phaseNumber <0.06125) return "New Moon";
+        else if (phaseNumber < 0.1875) return "Waxing Crescent";
+        else if (phaseNumber < 0.3125) return "First Quarter";
+        else if (phaseNumber < 0.4375) return "Waxing Gibbous";
+        else if (phaseNumber < 0.5625) return "Full Moon";
+        else if (phaseNumber < 0.6875) return "Waning Gibbous";
+        else if (phaseNumber < 0.8125) return "Last Quarter";
+        else if (phaseNumber < 0.9375) return "Waning Crescent";
+        else return "New Moon";
     }
 
     setMoonNow(){//set attributes of moon
@@ -96,7 +97,7 @@ export class Sun {
         self.longitude = longitude;
     }
 
-    getTimes(){//get times of sunset, sunrise, and nighttimes
+    getTimes(){//get times of sunset, sunrise, and night times
         const times = SunCalc.getTimes(self.dayTime, self.latitude, self.longitude)
         return [times.sunrise, times.sunset, times.nightEnd, times.night]
     }

@@ -1,3 +1,5 @@
+//file for calculating information about relevant space objects
+
 const DEG2RAD = Math.PI / 180;//for conversions
 const RAD2DEG = 180 / Math.PI;
 
@@ -65,7 +67,7 @@ function wrap180(deg) {
 // get Julian date from normal date using math formula
 function julianDate(date) {
     const year = date.getUTCFullYear();
-    const month = date.getUTCMonth() + 1; // 1-12
+    const month = date.getUTCMonth() + 1;
     const day =date.getUTCDate() +(date.getUTCHours() +(date.getUTCMinutes() + (date.getUTCSeconds() + date.getUTCMilliseconds()/1000)/60)/60)/24;
 
     let Y = year;
@@ -85,7 +87,7 @@ function gmstDeg(date) {
     const JD = julianDate(date);
     const T = (JD - 2451545.0) / 36525.0;
 
-    let gmst = 280.46061837 + 360.98564736629 * (JD - 2451545.0) + 0.000387933 * T*T - (T*T*T) / 38710000.0;``
+    let gmst = 280.46061837 + 360.98564736629 * (JD - 2451545.0) + 0.000387933 * T*T - (T*T*T) / 38710000.0;
     return wrap360(gmst);
 }
 

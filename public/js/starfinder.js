@@ -19,7 +19,7 @@ function runStarfinder() {//load sky map and list of brightest objects
   }
 }
 
-// On page load, start
+// On page/state load, start
 if (loadState()) {
   runStarfinder();
 } else {

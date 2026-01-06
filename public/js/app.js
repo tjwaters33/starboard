@@ -1,3 +1,5 @@
+//javascript logic for index.html
+
 import { Moon, Sun } from "./sunandmoon.js";
 import { state, loadState, hasLocation, setState } from "./state.js";
 
@@ -9,16 +11,12 @@ if (location_button){
 
 if (hasLocation() && loadState()) {//check if location has already been set. if so, remove button and load table
     if (location) {
-        location.innerHTML =
-        "Current Location: " +
-        state.lat.toFixed(3) +
-        ", " +
-        state.lon.toFixed(3);
+        location.innerHTML ="Current Location: " +state.lat.toFixed(3) + ", " + state.lon.toFixed(3);
     }
     if (location_button) {
         location_button.style.display = "none";
     }
-    needLocation();
+    needLocation();//runs the things that were waiting for location
 }
 
 function getLocation() {
@@ -30,7 +28,7 @@ function getLocation() {
     //console.log(state);
 }
 
-function success(position) {
+function success(position) {//runs when location is successfully found
     setState(position.coords.latitude, position.coords.longitude);
     if (location) {
         location.innerHTML = "Current Location: " +state.lat.toFixed(3) +", " +state.lon.toFixed(3);
@@ -42,7 +40,7 @@ function success(position) {
 }
 
 
-function error() {
+function error() {//runs when location is not successfully found
   alert("Sorry, no position available.");
 }
 

@@ -43,14 +43,14 @@ app.get("/api/weather", async (req, res) => {
     );
     url.searchParams.set("forecast_days", "2");
 
-    // 3) Fetch data
+    // Fetch data
     const r = await fetch(url);
     if (!r.ok) {
       return res.status(502).json({ error: `Weather provider error: ${r.status}` });
     }
     const data = await r.json();
 
-    // 5) Res to browser
+    // Res to browser
     res.json(data);
   } catch (err) {
     res.status(500).json({ error: err.message });
