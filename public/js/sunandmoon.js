@@ -32,19 +32,21 @@ export class Moon {
         this.angle = mi.angle;
         //console.log(this.angle);
     }
-    drawMoon(canvas, text) {//draw moon in html
+    drawMoon(canvas, text) {//draw moon in html using canvas
+
+        //get context, find width, height, centers, and radius, then clears frame
         const ctx = canvas.getContext("2d");
         const w = canvas.width, h = canvas.height;
         const cx = w / 2, cy = h / 2;
         const r = Math.min(w, h) * 0.42;
-
         ctx.clearRect(0, 0, w, h);
 
+        //set the origin as the center, then rotate by moon angle
         ctx.save();
         ctx.translate(cx, cy);
         ctx.rotate(this.angle-Math.PI/2);
 
-        // dark background
+        // draw dark background disk
         ctx.beginPath();
         ctx.arc(0, 0, r, 0, Math.PI * 2);
         ctx.fillStyle = "darkslategray";
@@ -52,19 +54,20 @@ export class Moon {
 
         ctx.save();
 
-        // main moon circle
+        // main moon circle, use clip so nothing draws outside circle
         ctx.beginPath();
         ctx.arc(0, 0, r, 0, Math.PI * 2);
         ctx.clip();
 
-        // clip with shifted circle
-        const waxing = this.phase < 0.5;
+        // compute which side is illuminated and how much to shift based on illumination (0-1)
+        const waxing = this.phaseNumber < 0.5;
         const shift = (1 - this.illumination) * 2 * r;
         const lightX = waxing ? shift : -shift;
 
         ctx.beginPath();
         ctx.arc(lightX, 0, r, 0, Math.PI * 2);
-        ctx.clip();
+        ctx.clip();//clip again to the secondary circle
+
 
         // Draw the lit region
         ctx.beginPath();

@@ -1,3 +1,7 @@
+/*
+Sets up Express web server and returns data in JSON form to browser
+*/
+
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -17,10 +21,10 @@ app.get("/", (req, res) => {
 // Weather endpoint
 app.get("/api/weather", async (req, res) => {
   try {
-    const lat = Number(req.query.lat);
+    const lat = Number(req.query.lat);//from user
     const lon = Number(req.query.lon);
 
-    if (!Number.isFinite(lat) || !Number.isFinite(lon)) {//validation
+    if (!Number.isFinite(lat) || !Number.isFinite(lon)) {//input validation
       return res.status(400).json({ error: "lat and lon are required numbers" });
     }
 
@@ -50,12 +54,14 @@ app.get("/api/weather", async (req, res) => {
     }
     const data = await r.json();
 
-    // Res to browser
+    // Res JSON to browser
     res.json(data);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
+
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
