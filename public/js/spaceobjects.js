@@ -202,7 +202,8 @@ export function renderBrightestList(objects, skyMap) {
             //console.log(obj.altAz);
             // calculate where to look in sky to find selected object
             const cardinal = cardinalDirectionsFromAltAz(obj.altAz.azDeg);
-            directions.textContent = `To find ${obj.name.split(":")[0]} outside, look ${cardinal} and ${Math.round(obj.altAz.altDeg)} degrees up.`;
+            directions.textContent = `To find ${obj.name.split(":")[0]} outside, look ${cardinal} and ${Math.round(obj.altAz.altDeg)} degrees up.
+            \n AltAz coordinates: ${obj.altAz.altDeg}, ${obj.altAz.azDeg}`;
             
         });
 
